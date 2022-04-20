@@ -1,4 +1,5 @@
 <template>
+  <p class="order">Ordenado por {{ order }}</p>
   <div class="bacilus-list">
     <b-card
       v-for="bacilus in BacilusList"
@@ -19,6 +20,7 @@
 
 <script lang="ts">
 import Bacilus from "@/types/Bacilus";
+import OrderTerm from "@/types/OrderTerm";
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
@@ -28,9 +30,17 @@ export default defineComponent({
       required: true,
       type: Array as PropType<Bacilus[]>,
     },
+    order: {
+      required: true,
+      type: String as PropType<OrderTerm>,
+    },
   },
 });
 </script>
 
 <style scoped>
+.order {
+  max-width: 90%;
+  margin: 40px auto;
+}
 </style>

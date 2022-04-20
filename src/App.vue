@@ -1,6 +1,22 @@
 <template>
   <div class="app">
-    <BacilusList :BacilusList="bacterias" />
+    <header>
+      <div class="order">
+        <b-button
+          variant="light"
+          style="margin: 0 10px"
+          @click="handleClick('name')"
+          >Ordenar por nombre</b-button
+        >
+        <b-button
+          variant="light"
+          style="margin: 0 10px"
+          @click="handleClick('id')"
+          >Ordenar por ID</b-button
+        >
+      </div>
+    </header>
+    <BacilusList :BacilusList="bacterias" :order="order" />
   </div>
 </template>
 
@@ -8,6 +24,7 @@
 import { defineComponent, ref } from "vue";
 import BacilusList from "./components/BacilusList.vue";
 import Bacilus from "./types/Bacilus";
+import OrderTerm from "./types/OrderTerm";
 
 export default defineComponent({
   name: "App",
@@ -52,12 +69,25 @@ export default defineComponent({
       },
     ]);
 
-    return { bacterias };
+    const order = ref<OrderTerm>("name");
+
+    const handleClick = (term: OrderTerm) => {
+      order.value = term;
+    };
+
+    return { bacterias, handleClick, order };
   },
 
   methods: {},
 });
 </script>
 
-<style>
-</style>
+<style scoped>
+header {
+  text-align: center;
+}
+
+header .order {
+  margin-top: 20px;
+}
+</style>>
