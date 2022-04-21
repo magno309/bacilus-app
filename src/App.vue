@@ -32,21 +32,21 @@ export default defineComponent({
   setup() {
     const bacterias = ref<Bacilus[]>([
       {
-        name: "Bacteria 1",
+        name: "Bacteria 3",
         description: "Ta chikita",
         source:
           "https://phantom-marca.unidadeditorial.es/252acdd64f48851f815c16049a789f23/resize/1320/f/jpg/assets/multimedia/imagenes/2021/04/19/16188479459744.jpg",
         id: 1,
       },
       {
-        name: "Bacteria 2",
+        name: "Acteria 2",
         description: "Ta chikita",
         source:
           "https://phantom-marca.unidadeditorial.es/252acdd64f48851f815c16049a789f23/resize/1320/f/jpg/assets/multimedia/imagenes/2021/04/19/16188479459744.jpg",
         id: 2,
       },
       {
-        name: "Bacteria 3",
+        name: "Bacteria 1",
         description:
           "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores eaque itaque ducimus eius nesciunt ratione, quasi aliquid debitis explicabo vel aperiam corrupti eveniet eos ipsam, similique quos animi dicta porro.",
         source:
@@ -69,7 +69,7 @@ export default defineComponent({
       },
     ]);
 
-    const order = ref<OrderTerm>("name");
+    const order = ref<OrderTerm>("id");
 
     const handleClick = (term: OrderTerm) => {
       order.value = term;

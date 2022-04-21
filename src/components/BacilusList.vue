@@ -21,7 +21,7 @@
 <script lang="ts">
 import Bacilus from "@/types/Bacilus";
 import OrderTerm from "@/types/OrderTerm";
-import { defineComponent, PropType } from "vue";
+import { computed, defineComponent, PropType } from "vue";
 
 export default defineComponent({
   components: {},
@@ -34,6 +34,15 @@ export default defineComponent({
       required: true,
       type: String as PropType<OrderTerm>,
     },
+  },
+  setup(props) {
+    const orderedBacilus = computed(() => {
+      return [...props.BacilusList].sort((a: Bacilus, b: Bacilus) => {
+        return a[props.order] > b[props.order] ? 1 : -1;
+      });
+    });
+
+    return{ orderedBacilus };
   },
 });
 </script>
